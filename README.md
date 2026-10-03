@@ -1,7 +1,7 @@
 # Lyra — ASTRA Companion
 
 > Guided ASTRA companion: numbered menu, central target-list/shot-plan/reports,
-> read-only TOM. Status: draft, private.
+> read-only TOM. Status: 1.0 (stable).
 
 ## What it is
 
@@ -33,4 +33,4 @@ TOM read-only · capture directory read-only · writes only into `DATA/`
 
 ## Status
 
-Draft. Distribution: repo clone (no wheel while codeless).
+1.0 (stable). Distribution: repo clone (no wheel while codeless).
