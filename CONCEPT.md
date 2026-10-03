@@ -152,8 +152,9 @@ Built — profile skeleton (frontmatter + R1–R8 + registry refs), central
 
 Open / collected unclear (no speculation made — decisions needed):
 
-1. TOM content detailing (Boris ↔ stella, stella answers DIRECTLY — no review
-   files this session): chapter 01 user-guidance menu,
+1. TOM content detailing (BUILT 2026-10-03: 01 menu, 02 allowlist, 03 DATA
+   model, 04 pipeline-use, 05 reporting, NN glossary — full chapter set):
+   chapter 01 user-guidance menu,
    allowlist directory, inaccuracies vs. real CLI groups. Carried forward from
    stella's review (2026-10-03, file removed after incorporation): TOM 04 must
    hold the pre-flight rule (exact target folder + `lights\` exists, else STOPP
