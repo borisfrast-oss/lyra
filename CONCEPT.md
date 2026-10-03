@@ -172,20 +172,24 @@ Open / collected unclear (no speculation made — decisions needed):
    Leo builds drafts into `TOM/`.
 2. Adapter permission (U1, RESOLVED 2026-10-03): `edit: allow` like stella —
    a hard `deny` would leave Lyra unable to write anything (Write alone
-   cannot maintain DATA/TEMPLATES). Enforcement via textual boundaries
-   R1/R7 + guard test.
-3. Machine-readable config format (U2): `DATA/config.md` is the human doc with
-   empty defaults; file type/location for the wheel (YAML/JSON) decided at
-   wheel build, not here.
-4. Guard test (scope per stella Q4): path guard MINIMUM (TOM R/O, no
-   mkdir/ghosts in the capture tree, no astra writes except confirmed CLI
-   outputs) + command guard (only TOM-01 allowlist groups) — both.
-   CLI-gap per stella Q2: NO new command needed; `darks list/check` +
-   `target show` lack `--json` → lyra parses text (workaround suffices);
-   optional `--json` retrofit (no behavior change) at wheel build.
-5. PyPI/npm name check for `lyra`.
-6. Install-path verification: prove `<LYRA_HOME>/DATA` writable at runtime.
-7. Initial commit + remote (Boris-Go) → much later: remy publish.
+   cannot maintain DATA/TEMPLATES). Enforcement via textual boundaries R1/R7
+   (guard test DROPPED — stella precedent: text rules suffice; revisit only
+   after an actual violation).
+3. Machine-readable config format (U2, PARKED until packaging): needed only
+   when remy ships (installer/wheel reads it); `DATA/config.md` stays the
+   human doc until then.
+4. CLI: NO gaps (stella Q2) — no new command needed. `--json` retrofit for
+   `darks list/check` + `target show` DROPPED 2026-10-03 (purpose would have
+   been robust machine parsing; text parsing suffices) — revisit only if
+   parsing actually breaks.
+5. PyPI/npm name check for `lyra` (only relevant if a wheel ever ships;
+   repo distribution needs no name).
+6. Install verification: NO separate test — onboarding verifies implicitly
+   (`astra --version` proves install + location, first DATA write proves
+   writability). Covered by TOM 02.
+7. Distribution: NO wheel while codeless (pip needs a buildable package;
+   repo clone/zip suffices). remy publish only once something shippable
+   exists. Remote + tags on Boris-Go.
 
 ## 9. Lyra menu (TOM-01 draft, along the astra CLI groups)
 
