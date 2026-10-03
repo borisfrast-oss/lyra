@@ -24,7 +24,7 @@ _Run inputs: paths + file mtimes. No evidence, no claims._
 
 ### 2. Runtime / plausibility
 
-_Duration, timeout class, plausibility verdict
+_Duration, pipeline_timeout (from config, default 10 hours), plausibility verdict
 (e.g. 2–3s "success" = anomaly → diagnose, never compensate)._
 
 ### 3. Quality findings

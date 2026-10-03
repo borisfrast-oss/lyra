@@ -11,7 +11,9 @@
 LYRA
  1  Setup
  1.1  Install / update ASTRA (pip-level, outside the astra CLI)
- 1.2  Configure ASTRA (astra init / astra config wizard)
+ 1.2  Configure ASTRA + Lyra settings
+        (astra init / astra config wizard; lyra onboarding asks:
+        astra location, capture root, display name, language, pipeline_timeout)
  1.3  Show configuration (astra config show / config get KEY)
  1.4  Set / reset a value (astra config set KEY VALUE / config reset KEY)
  1.5  Environment check (astra doctor — read-only WITHOUT --fix;

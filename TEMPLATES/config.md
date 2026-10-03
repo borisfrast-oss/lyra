@@ -9,6 +9,7 @@
 | `capture_root` | `""` (empty) | user capture-data root → `<CAPTURE_ROOT>` (read-only for Lyra, R7) |
 | `display_name` | `""` (empty) | self-chosen user name Lyra addresses the user by |
 | `language` | `en` | preferred reporting language; EN templates render on request |
+| `pipeline_timeout` | `36000` (10 hours) | timeout in seconds for pipeline runs (`astra process`); user-configurable at onboarding; set to `0` or `null` for unlimited (overnight runs) |
 
 Machine-readable format (file type/location for the wheel): OPEN —
 decided at wheel build, not here.

@@ -33,7 +33,7 @@ Reference only — lyra manages nothing._
 ### 4. Pre-flight reference
 
 _Structure check result (target folder + `lights\` exist, else STOPP),
-darks present, disk/space, timeout class._
+darks present, disk/space, pipeline_timeout sane (from config, default 10 hours)._
 
 ### 5. Notes (free)
 

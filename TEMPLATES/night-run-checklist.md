@@ -21,7 +21,7 @@
 - [ ] No `mkdir` anywhere in the capture tree (ghost folders forbidden)
 - [ ] Capture basis is `<CAPTURE_ROOT>` (single root from lyra config, no other roots)
 - [ ] Required darks present (pointer per shot-plan) — else STOPP
-- [ ] Disk space + timeout class sane
+- [ ] Disk space + pipeline_timeout sane (from config, default 10 hours)
 - [ ] Log destination set (lyra DATA, never the capture folder)
 
 _Result: all ticked = GO. First STOPP = diagnose + report, never compensate._

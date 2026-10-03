@@ -34,6 +34,7 @@ a limit. Label every run: smoke or ECHT.
 
 ## 4.5 Timeout / plausibility + evidence
 
-- Timeout classes: ECHT family ~300s; drizzle/special longer per lessons.
+- **Pipeline timeout:** configurable per user (`pipeline_timeout` in config; default 10 hours = 36,000 seconds). Onboarding asks once; user can adjust or set unlimited for overnight runs.
+- **On timeout abort:** half-generated runs remain in `<target>/generated/` — do NOT delete blindly. Use `astra process --resume` to continue or decide cleanup manually.
 - Plausibility: a 2–3s "success" is an anomaly → diagnose, never trust.
 - Evidence duty: run inputs as paths + file mtimes. No evidence, no claims.
