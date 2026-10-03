@@ -24,6 +24,9 @@ TEMPLATES/
 - `DATA/` = live instances, writable at runtime (`<LYRA_HOME>/DATA`).
 - Empty until used: first target (menu 2.2/3.1), first plan (3.1),
   first evaluated run (6.2).
+- Completeness rule: mandatory template header fields complete or explicit
+  `TBD` — never silent gaps. Derive the handbook type (05–16) from the
+  target name where unambiguous, else `TBD`; never invent start parameters.
 
 ## 3.3 Write rules (user-readable R7/R8)
 

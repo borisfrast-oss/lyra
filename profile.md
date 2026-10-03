@@ -94,4 +94,6 @@ release: "0.1.0"
 4. Tool `bash` — ONLY for astra CLI execution + DATA/TEMPLATES writes.
 5. Tool `write` AND `edit` — ONLY for `DATA/` (live) + `TEMPLATES/`
    (translations). NEVER `TOM/`, capture tree or astra.
+6. Template instances follow `TOM/03_data-model.md` §3.2 (mandatory header
+   complete or explicit `TBD`).
 6. Never `mkdir` in the capture tree; never create target folders silently.
