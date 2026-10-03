@@ -1,11 +1,11 @@
 # Lyra — Concept (consolidated 2026-10-03, decisions F1–F5 same day)
 
-> Status: draft. SSOT for the Lyra runtime Knowledge Base lives in this repo,
-> not in orion. The orion Build-Akte (project.md / plan / backlog) is
-> intentionally NOT maintained — no SDLC, text work only.
-> Stella review: `orion/_work/stella/lyra-concept-review.md` (2026-10-03).
+> Status: draft. SSOT for the Lyra runtime Knowledge Base lives in this repo.
+> Build material (project/plan/backlog for building Lyra) is intentionally
+> NOT maintained — no SDLC, text work only.
+> Stella review 2026-10-03 (consumed, file removed).
 > Handbook count fixed same day: 37 chapters + README = 38 files
-> (was "36" in stella profile/knowledge-index/adapter).
+> (was "36" in stella's profile/index/adapter).
 
 ## 1. Goal
 
@@ -39,7 +39,7 @@ still open before publish.
 
 | Who | What |
 |-----|------|
-| stella | Concept + TOM content. Direct chat Boris ↔ stella only (stella is `task: deny`, no agent interaction). Output = proposals to `_work/stella/`. |
+| stella | Concept + TOM content. Direct chat with Boris only; proposals handed directly to leo (no review files). |
 | leo | Implementation of the skeleton + contents into `projects/lyra/` (scope exception, direct on Boris' order). No commit without Boris-Go (HR2). |
 | remy | Publishing ONLY at the end (own `builds/lyra/release-repo`, own publisher, own gates). Never publishes placeholders. |
 
@@ -47,9 +47,9 @@ No owen/tess/backy/ray/warden in the loop.
 
 ## 4. Repositories
 
-- Dev repo: `this repository` — own Git repo (`git init`
-  2026-10-03), decoupled from the `projects/` monorepo via `/lyra/`
-  in the parent `.gitignore`. Holds templates + schema + docs.
+- Dev repo: this repository — own Git repo (`git init` 2026-10-03), decoupled
+  from any parent monorepo (nested repo ignored at parent level).
+  Holds templates + schema + docs.
 - Runtime: wheel install without `.git`. DATA instances are writable at
   runtime; TOM stays read-only.
 - Remote + initial commit: pending Boris-Go.
@@ -88,6 +88,12 @@ lyra/
     shot-plan.md    — central shot-plan (template in repo, live at runtime)
     pipeline-report.md — run analysis + parameter suggestions
                       (template in repo, live at runtime)
+  TEMPLATES/        — EN template SSOT (proposed by stella 2026-10-03):
+                      target-list-entry.md, shot-plan.md, pipeline-report.md,
+                      night-run-checklist.md. Fixed header
+                      (target|type|date-version|preset-source|preflight|evidence)
+                      + fixed sections, free text only in Notes. Translations
+                      are the ONE exception allowed to be written here.
   .opencode/agents/lyra.md — thin adapter, reference to `profile.md` only,
                       no expertise inside (Zielbild §4). Current alex content
                       is placeholder, to be healed.
@@ -98,9 +104,9 @@ lyra/
 
 - **Lyra-Runtime-KB** = this repo (`profile.md` + `REGISTRY.md` + `TOM/` +
   `DATA/`). This is what Lyra works WITH at runtime.
-- **Orion-Build-Akte** (`knowledge-base/projects/lyra/`,
-  `knowledge-base/agents/lyra/`) = what we would work with to BUILD Lyra.
-  NOT maintained (no-SDLC decision). No SSOT break: each KB has its owner.
+- **Build-Akte** (project/plan/backlog material for building Lyra) = what one
+  would work with to BUILD Lyra. NOT maintained (no-SDLC decision).
+  No SSOT break: each KB has its owner.
 
 ## 7. Rules
 
@@ -119,18 +125,37 @@ lyra/
   Darksets live where configured (user directory at the captures); Lyra does
   nothing with them — unless we find a missing CLI command, then we discuss.
 - R4c (decided F4, verification open at install test): runtime DATA lives
-  in-install — e.g. wheel installed to `<LYRA_HOME>` writes into `<LYRA_HOME>/DATA`
-  of the KB. Rationale: opencode/claude likewise require the folder to be
+  in-install — the wheel writes into `<LYRA_HOME>/DATA` of the KB.
+  Rationale: opencode/claude likewise require the folder to be
   opened to read `.opencode/`/`.claude/`. Install test must prove writability.
 - R5: `display_name` is user-chosen, stored in Lyra user config. No privacy
   handling beyond that.
 - R6: Adapters stay thin (syntax + reference only).
+- R7 (decided): Lyra does NOTHING in the user's capture directory — it may
+  READ there but never WRITE there. Lyra writes only into `lyra/DATA`.
+  Sole exception: `lyra/TEMPLATES/` for translations (rendered output language
+  on user request).
+- R8 (decided): Lyra contains NO fixed paths and NO references into orion —
+  no absolute paths, no foreign-tree paths anywhere. The SOLE place holding
+  real paths is `DATA/config.md` (installation paths and user-provided ones:
+  `<ASTRA_HOME>`, `<CAPTURE_ROOT>`, `<LYRA_HOME>` resolve from there).
 
 ## 8. Open points (in order)
 
-1. TOM content detailing (Boris ↔ stella): chapter 01 user-guidance menu,
-   allowlist directory, inaccuracies vs. real CLI groups. Stella drafts
-   01–05+NN as proposals to `_work/stella/`, leo builds into `TOM/`.
+1. TOM content detailing (Boris ↔ stella, stella answers DIRECTLY — no review
+   files this session): chapter 01 user-guidance menu,
+   allowlist directory, inaccuracies vs. real CLI groups. Carried forward from
+   stella's review (2026-10-03, file removed after incorporation): TOM 04 must
+   hold the pre-flight rule (exact target folder + `lights\` exists, else STOPP
+   + report, never mkdir; `<CAPTURE_ROOT>` is the only basis), timeout/plausibility
+   rules (ECHT 300s family; 2–3s "success" = anomaly → diagnose) and
+   file-mtime evidence duty; TOM 05 the honesty rules (no misleading sharpness
+   metrics, elongation gate before registration tuning) plus handbook
+   REFERENCES not copies (ch22 entry, 04/21 parameters, 05–16 target types,
+   27 storage principle: originals untouched, processing creates new files);
+   NN the darkset pointer (match logic stays stella's / referenced, no silent
+   sync) and log separation (Lyra central runtime log vs. stella's working notes).
+   Leo builds drafts into `TOM/`.
 2. Heal both `lyra.md` adapters (de-alex, point at Lyra profile, EN).
 3. Profile skeleton (frontmatter `type/scope/role/layer/status` + sections,
    TOM-read-only rule + central REGISTRY reference).
@@ -141,3 +166,75 @@ lyra/
 6. PyPI/npm name check for `lyra`.
 7. Install-path verification: prove `<LYRA_HOME>/DATA` writable at runtime.
 8. Initial commit + remote (Boris-Go) → much later: remy publish.
+
+## 9. Lyra menu (TOM-01 draft, along the astra CLI groups)
+
+> Numbered guidance. Lyra calls ONLY these commands and writes ONLY into its
+> own DATA — never files inside astra (except what the official command itself
+> writes, e.g. a `target add` template, and only after user confirmation).
+
+```
+LYRA
+ 1  Setup
+ 1.1  Install / update ASTRA (pip-level, outside the astra CLI)
+ 1.2  Configure ASTRA (astra init / astra config wizard)
+ 1.3  Show configuration (astra config show / config get KEY)
+ 1.4  Set / reset a value (astra config set KEY VALUE / config reset KEY)
+ 1.5  Environment check (astra doctor — read-only; --fix only on confirmation)
+ 1.6  Download example data (astra download-example)
+ 1.7  System status (astra status)
+ 2  Targets
+ 2.1  List targets (astra target list)
+ 2.2  Add target (astra target add)
+ 2.3  Show / update / remove target (astra target show|update|remove)
+ 2.4  Organize lights (astra organize --dry-run first, then real run)
+ 3  Planning
+ 3.1  Suggest preset (astra suggest TARGET → stored into lyra target-list)
+ 3.2  Inspect headers (astra inspect TARGET)
+ 4  Darks
+ 4.1  Sync DwarfLab export (astra darks sync — TELE/cam_0 only, never WIDE)
+ 4.2  List library (astra darks list)
+ 4.3  Check coverage for a target (astra darks check)
+ 4.4  Import frames (astra darks import)
+ 5  Processing
+ 5.1  Process one target (astra process TARGET [--preset] [--dry-run])
+ 5.2  Process all targets (astra batch — requires suggested.yaml per target)
+ 5.3  Merge group stacks (astra merge)
+ 6  Quality & reports
+ 6.1  Quality check (astra qc [--latest] [--all])
+ 6.2  Pipeline report (lyra analysis of the run + suggested next CLI flags)
+ 7  Plugins
+ 7.1  List pipeline plugins (astra plugin list — info only, no installs
+      through Lyra without explicit user go)
+  8  Lyra
+  8.1  My config (display_name, output language, astra/data locations)
+  8.2  Maintain target-list / shot-plan
+  8.3  View reports
+  8.4  Switch output language (render EN template in another language;
+       stored exceptionally in TEMPLATES/, see R7)
+```
+
+Source of the command surface: `astra/docs/03-cli-reference.md`
+(generated from `<ASTRA_HOME>/src/astro_process/cli.py`).
+
+## 10. Read-allowlist (parameterized — NO absolute paths)
+
+> `<ASTRA_HOME>` resolves from lyra `DATA/config.md` (astra location pointer).
+> Everything not listed is off-limits. Write access into `<ASTRA_HOME>`: NONE
+> (changes only via the official CLI commands above, on user confirmation).
+
+| # | Path (parameterized) | Access | Purpose |
+|---|----------------------|--------|---------|
+| A1 | `<ASTRA_HOME>/handbook/` | read | Siril workflow SSOT (37 ch. + README, EN); referenced, never copied |
+| A2 | astra Manual: `https://github.com/borisfrast-oss/astra/wiki` (remote, GitHub wiki with Handbook + Pipeline Docs menus) | read | user manual; referenced, never copied |
+| A3 | `<ASTRA_HOME>/src/astro_process/cli.py` | read | behaviour reference for the menu above |
+| A4 | `<ASTRA_HOME>/config.example.yaml` | read | config schema / defaults |
+| A5 | `<ASTRA_HOME>/templates/suggested_parameters.yaml` | read | suggestion template |
+| A6 | `<ASTRA_HOME>/config.yaml` + environment files | via `astra config*` ONLY | user config: shown/set through the CLI, never edited as files |
+
+Onboarding rule (decided): `<ASTRA_HOME>` defaults to EMPTY — Lyra initially
+knows neither whether astra is installed nor where it lives. First run asks
+once: astra installed? → verify via `astra --version` on PATH and record the
+location; not installed? → guide the install, then record; or the user hands
+over a path directly. No guessing, no silent fallback; install test proves
+`<LYRA_HOME>/DATA` writability.
