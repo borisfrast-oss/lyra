@@ -24,6 +24,13 @@ TOM read-only · capture directory read-only · writes only into `DATA/`
 (translations: `TEMPLATES/`) · no fixed paths (real paths live only in
 `DATA/config.md`) · EN is SSOT.
 
+## Quickstart
+
+1. Clone the repo into its own folder.
+2. Open that folder in opencode (lyra is the default agent) or Claude Code.
+3. Answer the onboarding questions (astra location, capture root, name,
+   language) — lyra asks once and never guesses paths.
+
 ## Status
 
 Draft. Distribution: repo clone (no wheel while codeless).

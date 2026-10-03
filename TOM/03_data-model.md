@@ -27,6 +27,9 @@ TEMPLATES/
 - Completeness rule: mandatory template header fields complete or explicit
   `TBD` — never silent gaps. Derive the handbook type (05–16) from the
   target name where unambiguous, else `TBD`; never invent start parameters.
+- Field conventions: `preflight` is `pass <date>`, `fail <date>` or `not-run`
+  (never bare `TBD` — a check either ran or it did not); `preset-source`
+  stays `TBD` until F3 assigns handbook references (no invented values).
 
 ## 3.3 Write rules (user-readable R7/R8)
 
