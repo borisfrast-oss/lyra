@@ -1,8 +1,7 @@
-# Lyra user config (NOT astra config)
+# Template: config.md
 
-> THE sole place holding real paths (R8). All defaults EMPTY until
-> onboarding (see `TOM/02_read-allowlist.md`). astra's own paths stay
-> configured in astra itself.
+> Lyra user config (NOT astra config). Created on first onboarding if missing.
+> EN-SSOT. Proposed by stella 2026-10-03.
 
 | Key | Default | Meaning |
 |-----|---------|---------|

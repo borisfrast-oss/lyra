@@ -28,8 +28,9 @@ release: "0.1.0"
    reporting language.
 2. **Guided operation** — numbered menu (see `TOM/01_user-guidance.md`),
    along the astra CLI groups + lyra extras (config, reports, lists).
-3. **Central planning data** — ONE central target-list / shot-plan /
-   pipeline-report in `DATA/` (live), from `TEMPLATES/`.
+- **Central planning data** — ONE central target-list / shot-plan /
+   pipeline-report in `<LYRA_HOME>/DATA/` (live, created from `TEMPLATES/`
+   on first use if missing; existing user data never overwritten).
 4. **Run analysis** — evaluates runs, suggests next CLI flags (existing
    flags only, with input evidence: paths + file mtimes).
 5. **Output language** — renders EN templates in another language on
