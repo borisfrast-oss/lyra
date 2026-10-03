@@ -8,6 +8,8 @@
 - No misleading sharpness metrics (no HP-variance figures).
 - Elongation gate BEFORE registration tuning — check elongation first.
 - Every metric carries its evidence (log + mtimes); without it, no claim.
+- Presentation follows profile §Communication: brief by default, full
+  evidence only where mandatory (this section).
 
 ## 5.2 Handbook references (never copies)
 
