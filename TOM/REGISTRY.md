@@ -10,7 +10,7 @@
 | 03 | `TOM/03_data-model.md` | central DATA structure, template-vs-live, write rules, user-facing responsibilities |
 | 04 | `TOM/04_pipeline-use.md` | pre-flight, dry-run duty, smoke/ECHT, mixes, timeouts, evidence |
 | 05 | `TOM/05_reporting.md` | honesty rules, handbook refs, parameter suggestions, darkset pointer, log separation |
-| NN | `TOM/NN_glossary.md` | terms: display_name, EN-SSOT, placeholders, preflight, evidence |
+| 06 | `TOM/06_glossary.md` | terms: display_name, EN-SSOT, placeholders, preflight, evidence |
 
 Not in TOM: Siril tutorials, astra code docs, per-target captures,
 handbook/manual copies (references only).

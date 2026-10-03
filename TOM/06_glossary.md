@@ -1,4 +1,4 @@
-# TOM NN — Glossary
+# TOM 06 — Glossary
 
 > EN-SSOT. Terms used across profile, TOM, DATA and TEMPLATES.
 

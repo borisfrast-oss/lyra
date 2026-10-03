@@ -66,9 +66,8 @@ lyra/
                       (runtime index) + TOM/ (docs) + adapters. No second
                       competing registry.
   TOM/              — Target Operating Model chapters, EN, versioned, read-only:
-                      01_*.md, 02_*.md, NN_*.md (numbered, handbook-style;
-                      NN = floating appendix, takes the final number once the
-                      chapter list is fixed).
+                      01–06 (numbered, handbook-style; 06 glossary closes
+                      the set).
                       Enforcement = profile sentence + adapter text rule
                       (`edit` allowed ONLY for DATA/TEMPLATES) + one guard test
                       (planned).
@@ -147,13 +146,13 @@ lyra/
 
 Built — profile skeleton (frontmatter + R1–R8 + registry refs), central
 `REGISTRY.md`, `TOM/REGISTRY.md` + `DATA/REGISTRY.md`, TOM 01 (menu) + 02
-(allowlist + onboarding) + NN (glossary), 4 EN templates, `DATA/config.md`
+(allowlist + onboarding) + 06 (glossary), 4 EN templates, `DATA/config.md`
 (empty defaults) + live pointers, both adapters healed (thin, EN).
 
 Open / collected unclear (no speculation made — decisions needed):
 
 1. TOM content detailing (BUILT 2026-10-03: 01 menu, 02 allowlist, 03 DATA
-   model, 04 pipeline-use, 05 reporting, NN glossary — full chapter set):
+   model, 04 pipeline-use, 05 reporting, 06 glossary — full chapter set):
    chapter 01 user-guidance menu,
    allowlist directory, inaccuracies vs. real CLI groups. Carried forward from
    stella's review (2026-10-03, file removed after incorporation): TOM 04 must
@@ -164,7 +163,7 @@ Open / collected unclear (no speculation made — decisions needed):
    metrics, elongation gate before registration tuning) plus handbook
    REFERENCES not copies (ch22 entry, 04/21 parameters, 05–16 target types,
    27 storage principle: originals untouched, processing creates new files);
-   NN the darkset pointer (match logic stays stella's / referenced, no silent
+   glossary: the darkset pointer (match logic stays stella's / referenced, no silent
    sync) and log separation (Lyra central runtime log vs. stella's working notes).
    Plus (stella Q3): `process --preflight` first (+ `--yes` only with go),
    `--dry-run` duty (organize/process/merge/darks), `--limit` smoke vs. ECHT
@@ -183,8 +182,11 @@ Open / collected unclear (no speculation made — decisions needed):
    `darks list/check` + `target show` DROPPED 2026-10-03 (purpose would have
    been robust machine parsing; text parsing suffices) — revisit only if
    parsing actually breaks.
-5. PyPI/npm name check for `lyra` (only relevant if a wheel ever ships;
-   repo distribution needs no name).
+5. PyPI name check (DONE 2026-10-03): plain `lyra` TAKEN since 2011
+   (Django time-management app v1.3, owner hylje). DECIDED: `astra-agent`
+   (404 = free, analogy to `astra-pipeline`; Boris 2026-10-03). Fallbacks if
+   needed: `lyra-astro`, `astra-lyra` (both free). Relevant only if a wheel
+   ever ships; repo distribution needs no name.
 6. Install verification: NO separate test — onboarding verifies implicitly
    (`astra --version` proves install + location, first DATA write proves
    writability). Covered by TOM 02.
