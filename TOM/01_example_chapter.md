@@ -1,1 +1,0 @@
-example chapter 01 of Target Operating Model

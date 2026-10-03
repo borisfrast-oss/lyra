@@ -66,9 +66,12 @@ lyra/
                       (runtime index) + TOM/ (docs) + adapters. No second
                       competing registry.
   TOM/              — Target Operating Model chapters, EN, versioned, read-only:
-                      01_*.md, 02_*.md, NN_*.md (numbered, handbook-style).
-                      Enforcement = profile sentence + adapter `edit: deny`
-                      on TOM paths + one guard test (planned).
+                      01_*.md, 02_*.md, NN_*.md (numbered, handbook-style;
+                      NN = floating appendix, takes the final number once the
+                      chapter list is fixed).
+                      Enforcement = profile sentence + adapter text rule
+                      (`edit` allowed ONLY for DATA/TEMPLATES) + one guard test
+                      (planned).
                       Own TOM/REGISTRY.md (decided). Chapter 01 = user guidance
                       as numbered menu, e.g. 1. install/update ASTRA,
                       2. configure ASTRA, 3. functions along the CLI groups,
@@ -140,7 +143,14 @@ lyra/
   real paths is `DATA/config.md` (installation paths and user-provided ones:
   `<ASTRA_HOME>`, `<CAPTURE_ROOT>`, `<LYRA_HOME>` resolve from there).
 
-## 8. Open points (in order)
+## 8. Status (built 2026-10-03 by leo, inside `lyra/` only)
+
+Built — profile skeleton (frontmatter + R1–R8 + registry refs), central
+`REGISTRY.md`, `TOM/REGISTRY.md` + `DATA/REGISTRY.md`, TOM 01 (menu) + 02
+(allowlist + onboarding) + NN (glossary), 4 EN templates, `DATA/config.md`
+(empty defaults) + live pointers, both adapters healed (thin, EN).
+
+Open / collected unclear (no speculation made — decisions needed):
 
 1. TOM content detailing (Boris ↔ stella, stella answers DIRECTLY — no review
    files this session): chapter 01 user-guidance menu,
@@ -155,17 +165,27 @@ lyra/
    27 storage principle: originals untouched, processing creates new files);
    NN the darkset pointer (match logic stays stella's / referenced, no silent
    sync) and log separation (Lyra central runtime log vs. stella's working notes).
+   Plus (stella Q3): `process --preflight` first (+ `--yes` only with go),
+   `--dry-run` duty (organize/process/merge/darks), `--limit` smoke vs. ECHT
+   separated, AZ/EQ-mix + Moon-READY (from organize), single-group needs no
+   merge, local-darks nuance.
    Leo builds drafts into `TOM/`.
-2. Heal both `lyra.md` adapters (de-alex, point at Lyra profile, EN).
-3. Profile skeleton (frontmatter `type/scope/role/layer/status` + sections,
-   TOM-read-only rule + central REGISTRY reference).
-4. ROOT-REGISTRY → DATA-Registry + TOM/REGISTRY wiring.
-5. Guard test for TOM-read-only (which TOM paths `edit:deny`, what it protects)
-   + darkset/CLI-gap check: pipeline is expected to handle darksets; if a CLI
-   command is missing we discuss it (F5).
-6. PyPI/npm name check for `lyra`.
-7. Install-path verification: prove `<LYRA_HOME>/DATA` writable at runtime.
-8. Initial commit + remote (Boris-Go) → much later: remy publish.
+2. Adapter permission (U1, RESOLVED 2026-10-03): `edit: allow` like stella —
+   a hard `deny` would leave Lyra unable to write anything (Write alone
+   cannot maintain DATA/TEMPLATES). Enforcement via textual boundaries
+   R1/R7 + guard test.
+3. Machine-readable config format (U2): `DATA/config.md` is the human doc with
+   empty defaults; file type/location for the wheel (YAML/JSON) decided at
+   wheel build, not here.
+4. Guard test (scope per stella Q4): path guard MINIMUM (TOM R/O, no
+   mkdir/ghosts in the capture tree, no astra writes except confirmed CLI
+   outputs) + command guard (only TOM-01 allowlist groups) — both.
+   CLI-gap per stella Q2: NO new command needed; `darks list/check` +
+   `target show` lack `--json` → lyra parses text (workaround suffices);
+   optional `--json` retrofit (no behavior change) at wheel build.
+5. PyPI/npm name check for `lyra`.
+6. Install-path verification: prove `<LYRA_HOME>/DATA` writable at runtime.
+7. Initial commit + remote (Boris-Go) → much later: remy publish.
 
 ## 9. Lyra menu (TOM-01 draft, along the astra CLI groups)
 
@@ -180,28 +200,40 @@ LYRA
  1.2  Configure ASTRA (astra init / astra config wizard)
  1.3  Show configuration (astra config show / config get KEY)
  1.4  Set / reset a value (astra config set KEY VALUE / config reset KEY)
- 1.5  Environment check (astra doctor — read-only; --fix only on confirmation)
+ 1.5  Environment check (astra doctor — read-only WITHOUT --fix;
+       --fix WRITES dirs/config/darks → only with explicit confirm)
  1.6  Download example data (astra download-example)
  1.7  System status (astra status)
  2  Targets
  2.1  List targets (astra target list)
  2.2  Add target (astra target add)
  2.3  Show / update / remove target (astra target show|update|remove)
- 2.4  Organize lights (astra organize --dry-run first, then real run)
+ 2.4  Organize lights (astra organize TARGET --dry-run first, then real run;
+       astra organize --all [--dry-run] for all targets, ignores
+       _darks/generated/_work/…)
  3  Planning
- 3.1  Suggest preset (astra suggest TARGET → stored into lyra target-list)
- 3.2  Inspect headers (astra inspect TARGET)
+ 3.1  Suggest preset (astra suggest TARGET [--header/--coords/--output/--json]
+       — ALWAYS writes suggested.yaml into the target root (overwrite)
+       → stored into lyra target-list)
+ 3.2  Inspect headers (astra inspect TARGET [--json/--eqmode/--frames/--quality])
  4  Darks
- 4.1  Sync DwarfLab export (astra darks sync — TELE/cam_0 only, never WIDE)
+ 4.1  Sync DwarfLab export (astra darks sync [--dry-run/--source/--dest]
+       — TELE/cam_0 only, never WIDE)
  4.2  List library (astra darks list)
- 4.3  Check coverage for a target (astra darks check)
- 4.4  Import frames (astra darks import)
+ 4.3  Check coverage for a target (astra darks check TARGET — local darks/
+       vs. library)
+ 4.4  Import frames (astra darks import PATH --dry-run first)
  5  Processing
- 5.1  Process one target (astra process TARGET [--preset] [--dry-run])
- 5.2  Process all targets (astra batch — requires suggested.yaml per target)
- 5.3  Merge group stacks (astra merge)
+ 5.1  Process one target (astra process TARGET --from-suggested REQUIRED
+       since v1.11 [--preset] [--dry-run] [--limit = smoke] [--resume]
+       [--preflight] [--yes only with go] [--keep-working])
+ 5.2  Process all targets (astra batch [--preset/--dry-run/--limit/data_root]
+       — requires suggested.yaml per target)
+ 5.3  Merge group stacks (astra merge [--method/--weight-by/--merge-filter/
+       --dry-run]; needs >=2 groups, single = auto-merged)
  6  Quality & reports
- 6.1  Quality check (astra qc [--latest] [--all])
+ 6.1  Quality check (astra qc <generated-path> [--json/--check-header];
+       --all/--latest for target-root)
  6.2  Pipeline report (lyra analysis of the run + suggested next CLI flags)
  7  Plugins
  7.1  List pipeline plugins (astra plugin list — info only, no installs
