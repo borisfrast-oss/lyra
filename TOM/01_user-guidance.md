@@ -10,12 +10,17 @@
 ```
 LYRA
  1  Setup
-  1.1  Install / update ASTRA (pip-level, outside the astra CLI — ONLY
-        pinned `python -m pip install [--upgrade]
-        "astra-pipeline[<extras>]" after explicit user go + env query;
-        mandatory `astra --version` after; forbidden: other packages,
-        uninstall, --force/--break-system-packages, silent retries;
-        violation = STOPP + report)
+ 1.1  Install / update ASTRA (pip-level, outside the astra CLI — ONLY
+       pinned `<astra_python> -m pip install [--upgrade]
+       "astra-pipeline[<extras>]"` after explicit user go + env query
+       (`python --version` >=3.11, `python -m pip --version`) + venv
+       provisioning via `python -m venv "<venv_path>"` (target ONLY
+       `<LYRA_HOME>/venvs/<name>` or user-approved EMPTY dir, never a
+       data root, never `<ASTRA_HOME>`, never `C:\` root, always quoted);
+       mandatory `astra --version` (or `<astra_python> -m astro_process
+       --version`) after; forbidden: other packages, `dev` extras,
+       uninstall, --force/--break-system-packages/--target/--prefix/
+       --user, conda, silent retries; violation = STOPP + report)
  1.2  Configure ASTRA + Lyra settings
          (astra init / astra config wizard; lyra onboarding asks:
          astra location, capture root, optional darks library,
@@ -65,7 +70,7 @@ LYRA
        user go, never via pip)
  8  Lyra
   8.1  My config (display_name, output language, astra/data locations
-        incl. both roots `<CAPTURE_ROOT>` + `<DARKS_LIBRARY>`)
+         incl. both roots `<CAPTURE_ROOT>` + `<DARKS_LIBRARY>` (includes session-start config check per TOM/03 §3.5)
  8.2  Maintain target-list / shot-plan
  8.3  View reports
  8.4  Switch output language (render EN template in another language;

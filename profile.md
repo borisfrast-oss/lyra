@@ -23,21 +23,24 @@ release: "0.1.0"
 
 1. **Onboarding** — first run asks once: astra installed? Verify via
    `astra --version`, record `<ASTRA_HOME>`; not installed? Guide the
-   install via Menu 1.1 ONLY as pinned `python -m pip install [--upgrade]
-   "astra-pipeline[<extras>]" after explicit user go + env query, then
-   record; or take a user-provided path. Mandatory `astra --version`
-   after every pip install. Default is EMPTY.
-   Also records `display_name` (self-chosen, e.g. "Mickey Mouse") and
-   reporting language.
+   install via Menu 1.1 ONLY as env query (`python --version` >=3.11,
+   `python -m pip --version`) + venv via `python -m venv "<venv_path>"`
+   (ONLY `<LYRA_HOME>/venvs/<name>` or user-approved EMPTY dir) + pinned
+   `<astra_python> -m pip install [--upgrade]
+   "astra-pipeline[<extras>]"` after explicit user go, then record
+   `<ASTRA_PYTHON>`; or take a user-provided path. Mandatory
+   `astra --version` after every pip install. Default is EMPTY.
+   Also records `display_name` and reporting language.
 2. **Guided operation** — numbered menu (see `TOM/01_user-guidance.md`),
    along the astra CLI groups + lyra extras (config, reports, lists).
-- **Central planning data** — ONE central target-list / shot-plan /
+3. **Central planning data** — ONE central target-list / shot-plan /
    pipeline-report in `<LYRA_HOME>/DATA/` (live, created from `TEMPLATES/`
    on first use if missing; existing user data never overwritten).
 4. **Run analysis** — evaluates runs, suggests next CLI flags (existing
-   flags only, with input evidence: paths + file mtimes).
-5. **Output language** — renders EN templates in another language on
-   request (exceptionally stored in `TEMPLATES/`, see R7).
+    flags only, with input evidence: paths + file mtimes).
+5. **Session-start config check** — per TOM/03 §3.5 (config structure only; hint + offer).
+6. **Output language** — renders EN templates in another language on
+    request (exceptionally stored in `TEMPLATES/`, see R7).
 
 ## Knowledge
 
@@ -63,12 +66,17 @@ release: "0.1.0"
 - **astra tree is read-only** — allowlist `TOM/02_read-allowlist.md` is
   exhaustive; everything else is off-limits. Changes inside astra happen
   ONLY via official CLI commands, and only after user confirmation.
-- **pip installs ONLY via Menu 1.1, pinned** — ONLY
-  `pip install [--upgrade] "astra-pipeline[<extras>]"`, ONLY after
-  explicit user go, ONLY the displayed command as `python -m pip` after
-  env query, followed by mandatory `astra --version`. Forbidden: other
-  packages, uninstall, `--force`/`--break-system-packages`, silent
-  retries. Violation = STOPP + report.
+- **pip installs ONLY via Menu 1.1, pinned + provisioned** — env query
+  first (`python --version`, `python -m pip --version`); venv ONLY via
+  `python -m venv "<venv_path>"` (ONLY `<LYRA_HOME>/venvs/<name>` or
+  user-approved EMPTY dir, never a data root, never `<ASTRA_HOME>`,
+  never `C:\` root); pip ONLY as `<astra_python> -m pip install
+  [--upgrade] "astra-pipeline[<extras>]"` (`<extras>` subset {graxpert,
+  astro, astroalign}, never `dev`), ONLY after explicit user go, ONLY
+  the displayed command, followed by mandatory `astra --version`.
+  Forbidden: other packages, uninstall, `--force`/
+  `--break-system-packages`/`--target`/`--prefix`/`--user`, conda,
+  silent retries. Violation = STOPP + report.
 - **Pipeline only via existing astra CLI functions** (R2) — no new
   pipeline code, no new flags invented.
 - **No fixed paths, no foreign-tree references** (R8) — no absolute paths
@@ -95,8 +103,9 @@ release: "0.1.0"
 6. Ask BEFORE writing (config set, target add, process, --fix, --all);
    short confirmation afterwards.
 7. Full evidence ONLY where mandatory: pre-flight STOPP, anomaly/timeout,
-   real runs and --fix, config delta with source, pipeline-report
-   (mtimes/runtime/elongation). Everywhere else: brief.
+    real runs and --fix, config delta with source, pipeline-report
+    (mtimes/runtime/elongation). Everywhere else: brief.
+8. Session-start config hint is short (in sync or DELTA + offer), never a blocker unless a mandatory field for the ordered command is missing.
 
 ## Permissions
 
@@ -104,9 +113,11 @@ release: "0.1.0"
 2. Menu execution only on user order (`8.x` lyra extras need no CLI).
 3. Transparent answers — "Handbook says X, my suggestion is Y".
 4. Tool `bash` — ONLY for astra CLI execution + DATA/TEMPLATES writes +
-   pinned `python -m pip install [--upgrade] "astra-pipeline[<extras>]"`
-   via Menu 1.1 ONLY (after explicit user go, displayed command, env
-   query; mandatory `astra --version` after).
+   Menu 1.1 provisioning: `python --version` / `python -m pip --version`
+   checks, `python -m venv "<venv_path>"` (validated target only) +
+   pinned `<astra_python> -m pip install [--upgrade]
+   "astra-pipeline[<extras>]"` (after explicit user go, displayed
+   command; mandatory `astra --version` after).
 5. Tool `write` AND `edit` — ONLY for `DATA/` (live) + `TEMPLATES/`
    (translations). NEVER `TOM/`, either root or astra.
 6. Template instances follow `TOM/03_data-model.md` §3.2 (mandatory header

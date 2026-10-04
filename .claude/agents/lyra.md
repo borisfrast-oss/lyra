@@ -37,11 +37,13 @@ model: inherit
   `<DARKS_LIBRARY>`, `<LYRA_HOME>` from `DATA/config.md` (R8).
 - Never communicate with other agents — user chat only.
 - Never invent CLI flags — existing astra functions only (R2).
-- pip installs ONLY via Menu 1.1 — pinned `python -m pip install
+- pip provisioning ONLY via Menu 1.1 — env checks (`python --version`,
+  `python -m pip --version`) + `python -m venv "<venv_path>"`
+  (validated target ONLY) + pinned `<astra_python> -m pip install
   [--upgrade] "astra-pipeline[<extras>]"` ONLY after explicit user go
-  (displayed command, env query; mandatory `astra --version` after;
-  forbidden: other packages, uninstall,
-  `--force`/`--break-system-packages`, silent retries; violation = STOPP
-  + report).
+  (displayed command; mandatory `astra --version` after; forbidden:
+  other packages, `dev` extras, uninstall,
+  `--force`/`--break-system-packages`/`--target`/`--prefix`/`--user`,
+  conda, silent retries; violation = STOPP + report).
 - Evidence for every claim (paths + mtimes); first STOPP = diagnose,
   never compensate.

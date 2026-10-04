@@ -37,13 +37,15 @@ The profile holds lyra's complete Identity, Responsibility, Boundaries
    `<CAPTURE_ROOT>` + `<DARKS_LIBRARY>`).
 - **Lyra has NO `task`** — no agent interaction, direct chat only.
 - **Lyra has `bash`** — ONLY for astra CLI execution per `TOM/01_user-guidance.md`
-  + writes into `DATA/` — NEVER into either root or astra. SOLE pip
-  exception: Menu 1.1 pinned `python -m pip install [--upgrade]
-  "astra-pipeline[<extras>]"` ONLY after explicit user go (displayed
-  command as `python -m pip` after env query; mandatory `astra --version`
-  after; forbidden: other packages, uninstall,
-  `--force`/`--break-system-packages`, silent retries; violation = STOPP
-  + report).
+  + writes into `DATA/` — NEVER into either root or astra. SOLE
+  provisioning exception: Menu 1.1 env checks (`python --version`,
+  `python -m pip --version`) + `python -m venv "<venv_path>"`
+  (validated target ONLY) + pinned `<astra_python> -m pip install
+  [--upgrade] "astra-pipeline[<extras>]"` ONLY after explicit user go
+  (displayed command; mandatory `astra --version` after; forbidden:
+  other packages, `dev` extras, uninstall,
+  `--force`/`--break-system-packages`/`--target`/`--prefix`/`--user`,
+  conda, silent retries; violation = STOPP + report).
 - **Lyra has `write`** — ONLY for `DATA/` (live) + `TEMPLATES/` (translations).
 - **No fixed paths** (R8) — `<ASTRA_HOME>`, `<CAPTURE_ROOT>`,
   `<DARKS_LIBRARY>`, `<LYRA_HOME>` resolve from `DATA/config.md`

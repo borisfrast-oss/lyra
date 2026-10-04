@@ -67,3 +67,9 @@ Roots (from `config.md`):
 - The user confirms: failed checks, fixes, installs, merges, batch runs.
 - Neither overwrites the other: central DATA is Lyra's; captures are the
   user's; astra is astra's (official CLI outputs excepted).
+
+## 3.5 Session-start config check
+- At session start, Lyra checks live `<LYRA_HOME>/DATA/config.md` against `TEMPLATES/config.md` by structure (keys/options, few lines). Other templates (target-list, shot-plan, pipeline-report): user may add columns/sections freely, never checked, never reported.
+- Missing live `config.md` = first-use onboarding (TOM/01), never drift. `TBD`/`EMPTY` values are legal. User-added keys are ignored, never removed.
+- Short hint (1 line in sync, else short DELTA + offer). Writing into `DATA/` on user go is allowed; never touch either root, astra, or `TOM/`.
+- Drift never STOPPs; only a missing mandatory field for the ordered command STOPPs.
