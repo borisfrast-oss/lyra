@@ -26,6 +26,13 @@ Runtime (created by Lyra on first use if missing):
   pipeline-report.md — live: one evaluation per run (template §3)
 ```
 
+Roots (from `config.md`):
+
+- `capture_root` (mandatory): user capture-data root → `<CAPTURE_ROOT>`.
+- `darks_library` (optional, default EMPTY): second root for the darks
+  library → `<DARKS_LIBRARY>`; EMPTY keeps single-root use
+  (backward-compatible).
+
 ## 3.2 Template vs. live
 
 - `TEMPLATES/` = versioned schema. Never edited at runtime — except
@@ -45,11 +52,13 @@ Runtime (created by Lyra on first use if missing):
 
 ## 3.3 Write rules (user-readable R7/R8)
 
-- Lyra READS the capture tree, never writes there.
+- Lyra READS `capture_root` and (when non-EMPTY) `darks_library`, never
+  writes to either (R7, ghost-guard: no `mkdir` in either root).
 - Lyra writes ONLY into `DATA/` (runtime), exceptionally into `TEMPLATES/`
   (translations on request).
-- No fixed paths anywhere: `<ASTRA_HOME>`, `<CAPTURE_ROOT>`, `<LYRA_HOME>`
-  resolve from `<LYRA_HOME>/DATA/config.md`.
+- No fixed paths anywhere: `<ASTRA_HOME>`, `<CAPTURE_ROOT>`,
+  `<DARKS_LIBRARY>`, `<LYRA_HOME>` resolve from
+  `<LYRA_HOME>/DATA/config.md`.
 
 ## 3.4 Responsibilities (user-facing)
 

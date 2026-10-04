@@ -17,8 +17,9 @@ LYRA
         uninstall, --force/--break-system-packages, silent retries;
         violation = STOPP + report)
  1.2  Configure ASTRA + Lyra settings
-        (astra init / astra config wizard; lyra onboarding asks:
-        astra location, capture root, display name, language, pipeline_timeout)
+         (astra init / astra config wizard; lyra onboarding asks:
+         astra location, capture root, optional darks library,
+         display name, language, pipeline_timeout)
  1.3  Show configuration (astra config show / config get KEY)
  1.4  Set / reset a value (astra config set KEY VALUE / config reset KEY)
  1.5  Environment check (astra doctor — read-only WITHOUT --fix;
@@ -40,7 +41,8 @@ LYRA
  4  Darks
  4.1  Sync DwarfLab export (astra darks sync [--dry-run/--source/--dest]
        — TELE/cam_0 only, never WIDE)
- 4.2  List library (astra darks list)
+  4.2  List library (astra darks list — library under `<DARKS_LIBRARY>`
+        when configured, else local darks under `<CAPTURE_ROOT>`)
  4.3  Check coverage for a target (astra darks check TARGET — local darks/
        vs. library)
  4.4  Import frames (astra darks import PATH --dry-run first)
@@ -62,7 +64,8 @@ LYRA
        never here — plugin installs only via official CLI with explicit
        user go, never via pip)
  8  Lyra
- 8.1  My config (display_name, output language, astra/data locations)
+  8.1  My config (display_name, output language, astra/data locations
+        incl. both roots `<CAPTURE_ROOT>` + `<DARKS_LIBRARY>`)
  8.2  Maintain target-list / shot-plan
  8.3  View reports
  8.4  Switch output language (render EN template in another language;

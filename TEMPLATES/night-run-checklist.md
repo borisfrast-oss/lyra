@@ -18,8 +18,9 @@
 
 - [ ] Target folder exists exactly (no guessing, no creating) — else STOPP
 - [ ] `lights\` present and matches the shot-plan series — else STOPP
-- [ ] No `mkdir` anywhere in the capture tree (ghost folders forbidden)
-- [ ] Capture basis is `<CAPTURE_ROOT>` (single root from lyra config, no other roots)
+- [ ] No `mkdir` in either root (ghost folders forbidden in both)
+- [ ] `<CAPTURE_ROOT>` exists (mandatory capture basis from lyra config) — else STOPP
+- [ ] `<DARKS_LIBRARY>` exists — ONLY when non-EMPTY (optional second root) — else STOPP
 - [ ] Required darks present (pointer per shot-plan) — else STOPP
 - [ ] Disk space + pipeline_timeout sane (from config, default 10 hours)
 - [ ] Log destination set (lyra DATA, never the capture folder)

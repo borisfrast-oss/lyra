@@ -1,7 +1,8 @@
 # TOM — Registry
 
 > Target Operating Model chapters. EN, versioned, READ-ONLY for Lyra
-> (R1: profile sentence + adapter text rule + guard test planned).
+> (R1: profile sentence + adapter text rule + guard test planned, incl.
+> read-only check for both roots `<CAPTURE_ROOT>` + `<DARKS_LIBRARY>`).
 
 | # | Chapter | Content |
 |---|---------|---------|

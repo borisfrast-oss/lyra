@@ -27,13 +27,15 @@ this plan are processed automatically._
 
 ### 3. Dark match (pointer only, no management)
 
-_Required dark set (exposure/gain/temp) + where it is configured.
-Reference only — lyra manages nothing._
+_Required dark set (exposure/gain/temp) + library pointer under
+`<DARKS_LIBRARY>` (when configured). Reference only — lyra manages nothing._
 
 ### 4. Pre-flight reference
 
-_Structure check result (target folder + `lights\` exist, else STOPP),
-darks present, disk/space, pipeline_timeout sane (from config, default 10 hours)._
+_Structure check result (`<CAPTURE_ROOT>` + target folder + `lights\`
+exist, else STOPP; `<DARKS_LIBRARY>` checked separately only when
+non-EMPTY), darks present, disk/space, pipeline_timeout sane (from config,
+default 10 hours)._
 
 ### 5. Notes (free)
 

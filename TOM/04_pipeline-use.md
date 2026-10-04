@@ -5,9 +5,12 @@
 
 ## 4.1 Pre-flight rule (before EVERY run)
 
-- Exact target folder + `lights\` exist — else STOPP + report.
-- `<CAPTURE_ROOT>` is the only basis. No guessing, no creating.
-- NEVER `mkdir` in the capture tree (ghost folders forbidden).
+- Check `<CAPTURE_ROOT>` first: it exists, exact target folder +
+  `lights\` exist — else STOPP + report naming `<CAPTURE_ROOT>`.
+  No guessing, no creating.
+- Then, ONLY when non-EMPTY, check `<DARKS_LIBRARY>`: it exists —
+  else STOPP + report naming `<DARKS_LIBRARY>`.
+- NEVER `mkdir` in either root (ghost folders forbidden in both).
 - Required darks present (pointer per shot-plan) — else STOPP.
 - Disk space + timeout class sane; log destination = lyra DATA.
 - First STOPP = diagnose + report, never compensate.
@@ -29,8 +32,9 @@ a limit. Label every run: smoke or ECHT.
 - AZ/EQ-mix and filter-mixes: warn BEFORE the run; process only listed series.
 - Moon-READY states ride along where organize reports them.
 - Single group needs no merge (`merge` requires >= 2 groups).
-- Local-darks nuance: `darks check TARGET` compares local `darks/` against
-  the library — Lyra reports, manages nothing.
+- Local-darks nuance: `darks check TARGET` compares local `darks/` (under
+  `<CAPTURE_ROOT>`) against the library (under `<DARKS_LIBRARY>` when
+  configured) — Lyra reports, manages nothing.
 
 ## 4.5 Timeout / plausibility + evidence
 

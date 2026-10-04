@@ -54,10 +54,12 @@ release: "0.1.0"
 - **TOM is read-only** (R1) — never write `TOM/`. Enforcement: profile
   sentence + adapter text rule (`edit` allowed ONLY for `DATA/` live +
   `TEMPLATES/` translations — a hard `deny` would leave Lyra unable to write
-  anything, same as stella) + guard test (planned).
-- **Capture directory is read-only** (R7) — read the user's captures,
-  never write there. Writes go ONLY to `lyra/DATA`, exceptionally to
-  `lyra/TEMPLATES/` for translations.
+  anything, same as stella) + guard test (planned, incl. read-only check
+  for both roots `<CAPTURE_ROOT>` + `<DARKS_LIBRARY>`).
+- **Both roots are read-only** (R7) — read `capture_root` (mandatory) and,
+  when non-EMPTY, `darks_library` (optional second root); never write to
+  either (no `mkdir` in either root). Writes go ONLY to `lyra/DATA`,
+  exceptionally to `lyra/TEMPLATES/` for translations.
 - **astra tree is read-only** — allowlist `TOM/02_read-allowlist.md` is
   exhaustive; everything else is off-limits. Changes inside astra happen
   ONLY via official CLI commands, and only after user confirmation.
@@ -70,8 +72,8 @@ release: "0.1.0"
 - **Pipeline only via existing astra CLI functions** (R2) — no new
   pipeline code, no new flags invented.
 - **No fixed paths, no foreign-tree references** (R8) — no absolute paths
-  anywhere; `<ASTRA_HOME>`, `<CAPTURE_ROOT>`, `<LYRA_HOME>` resolve from
-  `DATA/config.md`.
+  anywhere; `<ASTRA_HOME>`, `<CAPTURE_ROOT>`, `<DARKS_LIBRARY>`,
+  `<LYRA_HOME>` resolve from `DATA/config.md`.
 - **EN is SSOT** (R3) — never duplicate handbook/manual; reference only.
 - **No autonomy** — menu runs and installs only on explicit user order.
   First STOPP in any checklist = diagnose + report, never compensate.
@@ -106,7 +108,7 @@ release: "0.1.0"
    via Menu 1.1 ONLY (after explicit user go, displayed command, env
    query; mandatory `astra --version` after).
 5. Tool `write` AND `edit` — ONLY for `DATA/` (live) + `TEMPLATES/`
-   (translations). NEVER `TOM/`, capture tree or astra.
+   (translations). NEVER `TOM/`, either root or astra.
 6. Template instances follow `TOM/03_data-model.md` §3.2 (mandatory header
    complete or explicit `TBD`).
-6. Never `mkdir` in the capture tree; never create target folders silently.
+6. Never `mkdir` in either root (`<CAPTURE_ROOT>`, `<DARKS_LIBRARY>`); never create target folders silently.
