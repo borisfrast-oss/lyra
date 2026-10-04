@@ -12,7 +12,7 @@
 | `language` | `en` | preferred reporting language; EN templates render on request |
 | `pipeline_timeout` | `36000` (10 hours) | timeout in seconds for pipeline runs (`astra process`); user-configurable at onboarding; set to `0` or `null` for unlimited (overnight runs) |
 | `astra_python` | `""` (empty) | sole interpreter source → `<ASTRA_PYTHON>` (venv `Scripts/python.exe` on Windows, `bin/python` on POSIX); EMPTY = not provisioned; set only via onboarding/user-go |
-| `astra_extras` | `""` (empty = base) | subset of `{graxpert, astro, astroalign}`; `dev` never allowed; validated at onboarding |
+| `astra_extras` | `""` (empty = base; recommended: `astroalign` — star registration) | subset of `{graxpert, astro, astroalign}`; `dev` never allowed; validated at onboarding |
 
 Machine-readable format (file type/location for the wheel): OPEN —
 decided at wheel build, not here.

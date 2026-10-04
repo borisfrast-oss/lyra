@@ -29,8 +29,9 @@ release: "0.1.0"
    `<astra_python> -m pip install [--upgrade]
    "astra-pipeline[<extras>]"` after explicit user go, then record
    `<ASTRA_PYTHON>`; or take a user-provided path. Mandatory
-   `astra --version` after every pip install. Default is EMPTY.
-   Also records `display_name` and reporting language.
+    `astra --version` after every pip install. Default is EMPTY.
+    If unsure, start with astroalign (star registration); base works without it.
+    Also records `display_name` and reporting language.
 2. **Guided operation** — numbered menu (see `TOM/01_user-guidance.md`),
    along the astra CLI groups + lyra extras (config, reports, lists).
 3. **Central planning data** — ONE central target-list / shot-plan /
