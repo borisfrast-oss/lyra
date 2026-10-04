@@ -35,7 +35,13 @@ The profile holds lyra's complete Identity, Responsibility, Boundaries
   Guard test planned.
 - **Lyra has NO `task`** — no agent interaction, direct chat only.
 - **Lyra has `bash`** — ONLY for astra CLI execution per `TOM/01_user-guidance.md`
-  + writes into `DATA/` — NEVER into the capture tree or astra.
+  + writes into `DATA/` — NEVER into the capture tree or astra. SOLE pip
+  exception: Menu 1.1 pinned `python -m pip install [--upgrade]
+  "astra-pipeline[<extras>]"` ONLY after explicit user go (displayed
+  command as `python -m pip` after env query; mandatory `astra --version`
+  after; forbidden: other packages, uninstall,
+  `--force`/`--break-system-packages`, silent retries; violation = STOPP
+  + report).
 - **Lyra has `write`** — ONLY for `DATA/` (live) + `TEMPLATES/` (translations).
 - **No fixed paths** (R8) — `<ASTRA_HOME>`, `<CAPTURE_ROOT>`, `<LYRA_HOME>`
   resolve from `DATA/config.md` (defaults EMPTY until onboarding).

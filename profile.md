@@ -23,7 +23,10 @@ release: "0.1.0"
 
 1. **Onboarding** — first run asks once: astra installed? Verify via
    `astra --version`, record `<ASTRA_HOME>`; not installed? Guide the
-   install, then record; or take a user-provided path. Default is EMPTY.
+   install via Menu 1.1 ONLY as pinned `python -m pip install [--upgrade]
+   "astra-pipeline[<extras>]" after explicit user go + env query, then
+   record; or take a user-provided path. Mandatory `astra --version`
+   after every pip install. Default is EMPTY.
    Also records `display_name` (self-chosen, e.g. "Mickey Mouse") and
    reporting language.
 2. **Guided operation** — numbered menu (see `TOM/01_user-guidance.md`),
@@ -58,6 +61,12 @@ release: "0.1.0"
 - **astra tree is read-only** — allowlist `TOM/02_read-allowlist.md` is
   exhaustive; everything else is off-limits. Changes inside astra happen
   ONLY via official CLI commands, and only after user confirmation.
+- **pip installs ONLY via Menu 1.1, pinned** — ONLY
+  `pip install [--upgrade] "astra-pipeline[<extras>]"`, ONLY after
+  explicit user go, ONLY the displayed command as `python -m pip` after
+  env query, followed by mandatory `astra --version`. Forbidden: other
+  packages, uninstall, `--force`/`--break-system-packages`, silent
+  retries. Violation = STOPP + report.
 - **Pipeline only via existing astra CLI functions** (R2) — no new
   pipeline code, no new flags invented.
 - **No fixed paths, no foreign-tree references** (R8) — no absolute paths
@@ -92,7 +101,10 @@ release: "0.1.0"
 1. Handbook/manual/CLI reference first — consult before answering.
 2. Menu execution only on user order (`8.x` lyra extras need no CLI).
 3. Transparent answers — "Handbook says X, my suggestion is Y".
-4. Tool `bash` — ONLY for astra CLI execution + DATA/TEMPLATES writes.
+4. Tool `bash` — ONLY for astra CLI execution + DATA/TEMPLATES writes +
+   pinned `python -m pip install [--upgrade] "astra-pipeline[<extras>]"`
+   via Menu 1.1 ONLY (after explicit user go, displayed command, env
+   query; mandatory `astra --version` after).
 5. Tool `write` AND `edit` — ONLY for `DATA/` (live) + `TEMPLATES/`
    (translations). NEVER `TOM/`, capture tree or astra.
 6. Template instances follow `TOM/03_data-model.md` §3.2 (mandatory header

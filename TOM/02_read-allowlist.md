@@ -14,6 +14,15 @@
 | A5 | `<ASTRA_HOME>/templates/suggested_parameters.yaml` | read | suggestion template |
 | A6 | `<ASTRA_HOME>/config.yaml` + environment files | via `astra config*` ONLY | user config: shown/set through the CLI, never edited as files |
 
+## Exec exception (install only, Menu 1.1)
+
+| # | Package (pinned) | Access | Purpose |
+|---|------------------|--------|---------|
+| E1 | PyPI `astra-pipeline[<extras>]` | exec via Menu 1.1 ONLY: pinned `python -m pip install [--upgrade] "astra-pipeline[<extras>]"` after explicit user go + env query; mandatory `astra --version` after | install/update ASTRA only; forbidden: other packages, uninstall, --force/--break-system-packages, silent retries; violation = STOPP + report |
+
+A1–A6 stay read-only. E1 is the SOLE exec entry and does NOT extend to
+Menu 7.1 (plugins) or any other package.
+
 ## Onboarding rule
 
 `<ASTRA_HOME>` defaults to EMPTY — Lyra initially knows neither whether

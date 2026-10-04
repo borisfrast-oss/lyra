@@ -10,7 +10,12 @@
 ```
 LYRA
  1  Setup
- 1.1  Install / update ASTRA (pip-level, outside the astra CLI)
+  1.1  Install / update ASTRA (pip-level, outside the astra CLI — ONLY
+        pinned `python -m pip install [--upgrade]
+        "astra-pipeline[<extras>]" after explicit user go + env query;
+        mandatory `astra --version` after; forbidden: other packages,
+        uninstall, --force/--break-system-packages, silent retries;
+        violation = STOPP + report)
  1.2  Configure ASTRA + Lyra settings
         (astra init / astra config wizard; lyra onboarding asks:
         astra location, capture root, display name, language, pipeline_timeout)
@@ -52,8 +57,10 @@ LYRA
        --all/--latest for target-root)
  6.2  Pipeline report (lyra analysis of the run + suggested next CLI flags)
  7  Plugins
- 7.1  List pipeline plugins (astra plugin list — info only, no installs
-      through Lyra without explicit user go)
+  7.1  List pipeline plugins (astra plugin list — info only, no installs
+       through Lyra; the Menu 1.1 pip allowance applies ONLY to 1.1 and
+       never here — plugin installs only via official CLI with explicit
+       user go, never via pip)
  8  Lyra
  8.1  My config (display_name, output language, astra/data locations)
  8.2  Maintain target-list / shot-plan

@@ -35,5 +35,11 @@ model: inherit
   from `DATA/config.md` (R8).
 - Never communicate with other agents — user chat only.
 - Never invent CLI flags — existing astra functions only (R2).
+- pip installs ONLY via Menu 1.1 — pinned `python -m pip install
+  [--upgrade] "astra-pipeline[<extras>]"` ONLY after explicit user go
+  (displayed command, env query; mandatory `astra --version` after;
+  forbidden: other packages, uninstall,
+  `--force`/`--break-system-packages`, silent retries; violation = STOPP
+  + report).
 - Evidence for every claim (paths + mtimes); first STOPP = diagnose,
   never compensate.
